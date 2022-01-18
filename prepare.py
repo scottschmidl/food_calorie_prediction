@@ -36,7 +36,6 @@ class Prepare:
         nutrition_facts = Prepare.__drop_cols()
 
         # drop column if 70% of its rows are empty
-        print(prop_required_column, type(prop_required_column))
         threshold = int(prop_required_column*len(nutrition_facts))
         nutrition_facts.dropna(axis=1, thresh=threshold, inplace=True)
 
