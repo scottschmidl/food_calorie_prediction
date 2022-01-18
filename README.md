@@ -1,4 +1,4 @@
-# Zillow Housing Price Project
+# Food Calorie Prediction Project
 This repo contains my food calorie regression project with Codeup.
 
 ## About
