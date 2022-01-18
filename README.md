@@ -66,7 +66,7 @@ This data is sourced from the USDA Food Data Central.
 </table>
 
 ### Steps to Reproduce
-- You will need to go to this website, <a href="https://tools.myfooddata.com/nutrition-facts-database-spreadsheet.php">My Food Data</a> and open the file up in Google Sheets. The following punctuation needs to be removed before data can be read via Pandas, "():-,". Furthermore, these columns should be dropped, Serving Weight 1-9 description g (the 1-9 is because there are 9 columns with this name).
+- You will need to go to this website, <a href="https://tools.myfooddata.com/nutrition-facts-database-spreadsheet.php">My Food Data</a> and open the file up in Google Sheets. The following punctuation needs to be removed before data can be read via Pandas, ():-,. Furthermore, these columns should be dropped, Serving Weight 1-9 description g (the 1-9 is because there are 9 columns with this name).
 - Clone this repo and ensure wrangle.py and prepare.py are on your local machine.
 - Verify *.xlsx is in the .gitignore to ensure the xlsx file is not pushed to GitHub.
 - The technologies used in this project are Python 3.9.5, Pandas 1.3.5, MatPlotLib 3.5.0, Numpy 1.21.2 Seaborn 0.11.2, Scipy 1.7.3, and SkLearn 1.0.1. The notebook named report.ipynb should run.
