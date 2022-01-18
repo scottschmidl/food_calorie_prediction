@@ -2,7 +2,6 @@ from wrangle import Wrangle
 
 class Prepare:
 
-
     nutrition_facts = Wrangle().get_food_data()
 
     @classmethod
