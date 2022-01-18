@@ -5,14 +5,15 @@ import pandas as pd
 
 class SplitGetScale:
 
-    def split(self, df):
+    def split(self, df: pd.DataFrame) -> tuple:
 
         train, test = train_test_split(df, test_size=.15, random_state=123)
         train, validate = train_test_split(train, test_size=.2, random_state=123)
 
         return train, validate, test
 
-    def get_Xy(self, train, validate, test, cols_dummy=None, cols_drop=None):
+    def get_Xy(self, train: pd.DataFrame, validate: pd.DataFrame, test: pd.DataFrame,
+                    target_col: str, cols_dummy=None, cols_drop=None) -> tuple:
 
         if cols_drop:
             X_train = train.drop(cols_drop, axis=1)
@@ -24,13 +25,13 @@ class SplitGetScale:
             X_val = pd.get_dummies(X_val, columns=cols_dummy, drop_first=True)
             X_test = pd.get_dummies(X_test, columns=cols_dummy, drop_first=True)
 
-        y_train = train["log_error"]
-        y_val = validate["log_error"]
-        y_test = test["log_error"]
+        y_train = train[target_col]
+        y_val = validate[target_col]
+        y_test = test[target_col]
 
         return (X_train, y_train), (X_val, y_val), (X_test, y_test)
 
-    def scale(self, X_train, X_validate, X_test):
+    def scale(self, X_train: pd.DataFrame, X_validate: pd.DataFrame, X_test: pd.DataFrame) -> tuple:
 
         scale = StandardScaler()
         scale.fit(X_train)
