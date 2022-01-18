@@ -9,12 +9,12 @@ class Wrangle:
         Returns:
             pandas dataframe: used for analysis and modeling
         """
-        filename1 = "Food_Log.csv"
-        filename2 = "Nutrition_transposed.csv"
-        filename3 = "Nutrition.csv"
+        filename = "MyFoodData Nutrition Facts SpreadSheet Release 1.4 - SR Legacy and FNDDS.csv"
+        #filename = "MyFoodData Nutrition Facts SpreadSheet Release 1.4.xlsx"
 
         try:
-            return pd.read_csv(filename1), pd.read_csv(filename2), pd.read_csv(filename3)
+            return pd.read_csv(filename)
+            #return pd.read_excel(filename, sheet_name="SR Legacy and FNDDS")
 
         except FileNotFoundError:
-            print(f"{filename} not found. Please go to https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/0OR9HL to download the files.")
+            print(f"{filename} not found. Please go to https://tools.myfooddata.com/nutrition-facts-database-spreadsheet.php to download the file.")
