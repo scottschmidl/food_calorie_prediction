@@ -13,11 +13,11 @@ class Models:
     train, validate, test = sgs.split(nutrition_facts)
     (X_train, y_train), (X_validate, y_validate), (X_test, y_test) = sgs.get_Xy(train, validate, test, target_col="calories", cols_drop=["calories"])
 
-    def fit_supervised(self, X_train, y_train):
+    def linear_model(self, X_train, y_train):
         pass
 
-    def fit_unsupervised(self, X_train, y_train):
+    def clustering(self, X_train, y_train):
         pass
 
     def get_metric(self, y_train, y_pred):
-        return mean_squared_error(y_train, y_pred)
+        return   mean_squared_error(y_train, y_pred)
