@@ -36,7 +36,7 @@ class SplitGetScale:
         scale.fit(X_train)
 
         X_train_scaled = pd.DataFrame(data=scale.transform(X_train), columns=X_train.columns)
-        X_val_scaled = pd.DataFrame(data=scale.transform(X_validate), columns=X_train.columns)
+        X_validate_scaled = pd.DataFrame(data=scale.transform(X_validate), columns=X_train.columns)
         X_test_scaled = pd.DataFrame(data=scale.transform(X_test), columns=X_train.columns)
 
         return X_train_scaled, X_validate_scaled, X_test_scaled
