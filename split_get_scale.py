@@ -16,19 +16,19 @@ class SplitGetScale:
 
         if cols_drop:
             X_train = train.drop(cols_drop, axis=1)
-            X_val = validate.drop(cols_drop, axis=1)
+            X_validate = validate.drop(cols_drop, axis=1)
             X_test = test.drop(cols_drop, axis=1)
 
         if cols_dummy:
             X_train = pd.get_dummies(X_train, columns=cols_dummy, drop_first=True)
-            X_val = pd.get_dummies(X_val, columns=cols_dummy, drop_first=True)
+            X_validate = pd.get_dummies(X_val, columns=cols_dummy, drop_first=True)
             X_test = pd.get_dummies(X_test, columns=cols_dummy, drop_first=True)
 
         y_train = train[target_col]
-        y_val = validate[target_col]
+        y_validate = validate[target_col]
         y_test = test[target_col]
 
-        return (X_train, y_train), (X_val, y_val), (X_test, y_test)
+        return (X_train, y_train), (X_validate, y_validate), (X_test, y_test)
 
     def scale(self, X_train: pd.DataFrame, X_validate: pd.DataFrame, X_test: pd.DataFrame) -> tuple:
 
