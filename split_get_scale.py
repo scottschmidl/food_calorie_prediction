@@ -21,7 +21,7 @@ class SplitGetScale:
 
         if cols_dummy:
             X_train = pd.get_dummies(X_train, columns=cols_dummy, drop_first=True)
-            X_validate = pd.get_dummies(X_val, columns=cols_dummy, drop_first=True)
+            X_validate = pd.get_dummies(X_validate, columns=cols_dummy, drop_first=True)
             X_test = pd.get_dummies(X_test, columns=cols_dummy, drop_first=True)
 
         y_train = train[target_col]
