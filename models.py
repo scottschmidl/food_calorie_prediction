@@ -141,4 +141,4 @@ class Models:
             best_model_pred_test = best_model.predict(X_test_scaled)
 
 
-            print(f"TEST\nLinear Regressor Test RMSE: {round(mean_squared_error(self.y_test, best_model_pred_test, squared=False), 4)} calories")
+            print(f"TEST\nLinear Regressor Test RMSE: {round(mean_squared_error(self.y_test, best_model_pred_test, squared=False), 2)} calories")

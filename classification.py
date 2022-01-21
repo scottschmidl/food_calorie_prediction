@@ -58,4 +58,4 @@ class ClassificationModels:
 
             rfc_pred_test = best_model.predict(self.X_test_scaled)
 
-            print(f"TEST\nRandom Forest Classifier Test Accuracy: {round(accuracy_score(self.y_test, rfc_pred_test), 2)}")
+            print(f"TEST\nRandom Forest Classifier Test Accuracy: {round(accuracy_score(self.y_test, rfc_pred_test), 2)}%")
