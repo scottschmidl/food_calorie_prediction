@@ -102,7 +102,7 @@ class Models:
 
         # perform ANOVA test
         f, p = f_oneway(feat_cluster_0, feat_cluster_1, feat_cluster_2, feat_cluster_3, feat_cluster_4, feat_cluster_5, feat_cluster_6, feat_cluster_7)
-        print(f"f: {round(f, 2)}\np: {round(p, 2)}")
+        print(f"ANOVA F-Statistic: {round(f, 2)}, P-Value: {round(p, 2)}")
 
         return self.X_train_scaled, self.X_validate_scaled, self.X_test_scaled
 
@@ -134,13 +134,11 @@ class Models:
             # print validate RMSE
             print(f"VALIDATE\nLassoCV Validation RMSE: {round(mean_squared_error(self.y_validate, lass_pred_val, squared=False), 2)} calories\nRidgeCV Validation RMSE: {round(mean_squared_error(self.y_validate, ridge_pred_val, squared=False), 2)} calories\nRandom Forest Regressor Validation RMSE: {round(mean_squared_error(self.y_validate, rfr_pred_val, squared=False), 2)} calories\nLinear Regressor Validation RMSE: {round(mean_squared_error(self.y_validate, lr_pred_val, squared=False), 2)} calories")
 
-            return lasso, ridge, rfr, lr
+            return lr
 
         else:
-            print("Final Best Model Found With Clustering! Performing Predictions On X_test_scaled.")
 
             best_model_pred_test = best_model.predict(X_test_scaled)
 
-            print("Calculating RMSE...")
 
-            print(f"Linear Regressor Test RMSE: {round(mean_squared_error(self.y_test, best_model_pred_test, squared=False), 4)} calories")
+            print(f"TEST\nLinear Regressor Test RMSE: {round(mean_squared_error(self.y_test, best_model_pred_test, squared=False), 4)} calories")
