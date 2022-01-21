@@ -26,7 +26,7 @@ class Models:
 
         baseline_rmse = round(mean_squared_error(act_pred_error["actual"], act_pred_error["baseline_prediction"], squared=False), 2)
 
-        print(f"Baseline RMSE: {baseline_rmse}")
+        print(f"Baseline RMSE: {baseline_rmse} calories")
 
     def linear_modelsTV(self):
 
@@ -49,10 +49,10 @@ class Models:
         lr_pred_val = lr.predict(self.X_validate_scaled)
 
         # print train RMSE
-        print(f"TRAIN\nlasso train rmse: {round(mean_squared_error(self.y_train, lass_pred_train, squared=False), 2)}\nridge train rmse: {round(mean_squared_error(self.y_train, ridge_pred_train, squared=False), 2)}\nrandom forest regressor train rmse: {round(mean_squared_error(self.y_train, rfr_pred_train, squared=False), 2)}\nlinear regressor train rmse: {round(mean_squared_error(self.y_train, lr_pred_train, squared=False), 2)}")
+        print(f"TRAIN\nLassoCV Train RMSE: {round(mean_squared_error(self.y_train, lass_pred_train, squared=False), 2)} calories\nRidgeCV Train RMSE: {round(mean_squared_error(self.y_train, ridge_pred_train, squared=False), 2)} calories\nRandom Forest Regressor Train RMSE: {round(mean_squared_error(self.y_train, rfr_pred_train, squared=False), 2)} calories\nLinear Regressor Train RMSE: {round(mean_squared_error(self.y_train, lr_pred_train, squared=False), 2)} calories")
 
         # print validate RMSE
-        print(f"VALIDATE\nlasso validation rmse: {round(mean_squared_error(self.y_validate, lass_pred_val, squared=False), 2)}\nridge validation rmse: {round(mean_squared_error(self.y_validate, ridge_pred_val, squared=False), 2)}\nrandom forest regressor validation rmse: {round(mean_squared_error(self.y_validate, rfr_pred_val, squared=False), 2)}\nlinear regressor validation rmse: {round(mean_squared_error(self.y_validate, lr_pred_val, squared=False), 2)}")
+        print(f"VALIDATE\nLassoCV Validation RMSE: {round(mean_squared_error(self.y_validate, lass_pred_val, squared=False), 2)} calories\nRidgeCV Validation RMSE: {round(mean_squared_error(self.y_validate, ridge_pred_val, squared=False), 2)} calories\nRandom Forest Regressor Validation RMSE: {round(mean_squared_error(self.y_validate, rfr_pred_val, squared=False), 2)} calories\nLinear Regressor Validation RMSE: {round(mean_squared_error(self.y_validate, lr_pred_val, squared=False), 2)} calories")
 
     def clustering(self):
 
@@ -129,10 +129,10 @@ class Models:
             lr_pred_val = lr.predict(X_validate_scaled)
 
             # print train RMSE
-            print(f"TRAIN\nlasso train rmse: {round(mean_squared_error(self.y_train, lass_pred_train, squared=False), 2)}\nridge train rmse: {round(mean_squared_error(self.y_train, ridge_pred_train, squared=False), 2)}\nrandom forest regressor train rmse: {round(mean_squared_error(self.y_train, rfr_pred_train, squared=False), 2)}\nlinear regressor train rmse: {round(mean_squared_error(self.y_train, lr_pred_train, squared=False), 2)}")
+            print(f"TRAIN\nLassoCV Train RMSE: {round(mean_squared_error(self.y_train, lass_pred_train, squared=False), 2)} calories\nRidgeCV Train RMSE: {round(mean_squared_error(self.y_train, ridge_pred_train, squared=False), 2)} calories\nRandom Forest Regressor Train RMSE: {round(mean_squared_error(self.y_train, rfr_pred_train, squared=False), 2)} calories\nLinear Regressor Train RMSE: {round(mean_squared_error(self.y_train, lr_pred_train, squared=False), 2)} calories")
 
             # print validate RMSE
-            print(f"VALIDATE\nlasso validation rmse: {round(mean_squared_error(self.y_validate, lass_pred_val, squared=False), 2)}\nridge validation rmse: {round(mean_squared_error(self.y_validate, ridge_pred_val, squared=False), 2)}\nrandom forest regressor validation rmse: {round(mean_squared_error(self.y_validate, rfr_pred_val, squared=False), 2)}\nlinear regressor validation rmse: {round(mean_squared_error(self.y_validate, lr_pred_val, squared=False), 2)}")
+            print(f"VALIDATE\nLassoCV Validation RMSE: {round(mean_squared_error(self.y_validate, lass_pred_val, squared=False), 2)} calories\nRidgeCV Validation RMSE: {round(mean_squared_error(self.y_validate, ridge_pred_val, squared=False), 2)} calories\nRandom Forest Regressor Validation RMSE: {round(mean_squared_error(self.y_validate, rfr_pred_val, squared=False), 2)} calories\nLinear Regressor Validation RMSE: {round(mean_squared_error(self.y_validate, lr_pred_val, squared=False), 2)} calories")
 
             return lasso, ridge, rfr, lr
 
@@ -141,4 +141,6 @@ class Models:
 
             best_model_pred_test = best_model.predict(X_test_scaled)
 
-            print(f"linear regressor test rmse: {round(mean_squared_error(self.y_test, best_model_pred_test, squared=False), 4)}")
+            print("Calculating RMSE...")
+
+            print(f"Linear Regressor Test RMSE: {round(mean_squared_error(self.y_test, best_model_pred_test, squared=False), 4)} calories")
