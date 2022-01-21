@@ -57,6 +57,6 @@ class ClassificationModels:
         else:
             print("TEST\nFinal Best Model Found Using Random Forest Classifier! Performing Predictions on X_test_scaled.")
 
-            rfc_pred_test = best_model[0].predict(self.X_test_scaled)
+            rfc_pred_test = best_model.predict(self.X_test_scaled)
 
             print(f"Calculating Accuracy...\nRandom Forest Classifier Test Accuracy: {round(accuracy_score(self.y_test, rfc_pred_test), 2)}")
