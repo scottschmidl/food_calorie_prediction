@@ -2,6 +2,9 @@ import pandas as pd
 pd.options.display.max_columns = 110
 
 class Wrangle:
+    """
+    wrangles the data from a csv
+    """
 
     def get_food_data(self):
         """get_food_data: get data from csv

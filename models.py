@@ -8,6 +8,9 @@ from sklearn.metrics import mean_squared_error
 import seaborn as sns
 
 class Models:
+    """
+    performs Regression and Clustering
+    """
 
     nutrition_facts = Prepare().get_food_prep()
 
@@ -18,6 +21,8 @@ class Models:
     X_train_scaled, X_validate_scaled, X_test_scaled = sgs.scale(X_train, X_validate, X_test)
 
     def set_baseline(self):
+        """set_baseline calculates baseline RMSE
+        """
 
         from pandas import DataFrame
 
@@ -29,6 +34,8 @@ class Models:
         print(f"Baseline RMSE: {baseline_rmse} calories")
 
     def linear_modelsTV(self):
+        """linear_modelsTV fits and predicts on train and validate
+        """
 
         # fit the model
         lasso = LassoCV(random_state=123, max_iter=1800).fit(self.X_train_scaled, self.y_train)
@@ -55,6 +62,11 @@ class Models:
         print(f"VALIDATE\nLassoCV Validation RMSE: {round(mean_squared_error(self.y_validate, lass_pred_val, squared=False), 2)} calories\nRidgeCV Validation RMSE: {round(mean_squared_error(self.y_validate, ridge_pred_val, squared=False), 2)} calories\nRandom Forest Regressor Validation RMSE: {round(mean_squared_error(self.y_validate, rfr_pred_val, squared=False), 2)} calories\nLinear Regressor Validation RMSE: {round(mean_squared_error(self.y_validate, lr_pred_val, squared=False), 2)} calories")
 
     def clustering(self):
+        """clustering performs clustering, statistical tests, and regression
+
+        Returns:
+            tuple: a tuple of dataframes
+        """
 
         features = ["vitamin_a", "vitamin_c", "vitamin_b12", "vitamin_d", "vitamin_e_alphatocopherol", "thiamin_b1", "riboflavin_b2", "niacin_b3", "vitamin_b6", "folate_b9", "vitamin_k"]
 
@@ -107,6 +119,17 @@ class Models:
         return self.X_train_scaled, self.X_validate_scaled, self.X_test_scaled
 
     def cluster_modeling(self, X_train_scaled=None, X_validate_scaled=None, X_test_scaled=None, best_model=None):
+        """cluster_modeling performed regression with clusters
+
+        Args:
+            X_train_scaled (pandas dataframe, optional): scaled training data. Defaults to None.
+            X_validate_scaled (pandas dataframe, optional): scaled validate data. Defaults to None.
+            X_test_scaled (pandas dataframe, optional): sclaed test data. Defaults to None.
+            best_model (fit object, optional): the best model after fitting, predicting, and checking accuracy. Defaults to None.
+
+        Returns:
+            fit object: the algorithm to be used for testing
+        """
 
         if not best_model:
 
@@ -140,5 +163,5 @@ class Models:
 
             best_model_pred_test = best_model.predict(X_test_scaled)
 
-
+            # print test RMSE
             print(f"TEST\nLinear Regressor Test RMSE: {round(mean_squared_error(self.y_test, best_model_pred_test, squared=False), 2)} calories")

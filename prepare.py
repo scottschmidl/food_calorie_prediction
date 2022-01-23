@@ -1,11 +1,19 @@
 from wrangle import Wrangle
 
 class Prepare:
+    """
+    prepping the data
+    """
 
     nutrition_facts = Wrangle().get_food_data()
 
     @classmethod
     def __remove_null(cls):
+        """__remove_null private class method for removing nulls
+
+        Returns:
+            pandas dataframe: dataframe with nulls in food group removed
+        """
 
         #nutrition_facts = Wrangle().get_food_data()
 
@@ -16,6 +24,11 @@ class Prepare:
 
     @classmethod
     def __drop_cols(cls):
+        """__drop_cols private class method for dropping columns
+
+        Returns:
+            pandas dataframe: dataframe with columns dropped
+        """
 
         nutrition_facts = Prepare.__remove_null()
 
@@ -31,6 +44,15 @@ class Prepare:
 
     @classmethod
     def __remove_missing_values(cls, prop_required_column=.70, prop_required_row=.70):
+        """__remove_missing_values private class method for removing missing values
+
+        Args:
+            prop_required_column (float, optional): proportion of columns that are required to be not null otherwise drop. Defaults to .70.
+            prop_required_row (float, optional): proporation of rows that are required to be not null otherwise drop. Defaults to .70.
+
+        Returns:
+            pandas datafram: dataframe with columns dropped from a proportion
+        """
 
         nutrition_facts = Prepare.__drop_cols()
 
@@ -46,6 +68,14 @@ class Prepare:
 
     @classmethod
     def __fill_nutrition(cls, fill_value=0):
+        """__fill_nutrition fill the dataframe with a value
+
+        Args:
+            fill_value (int, optional): fill the na's with this value. Defaults to 0.
+
+        Returns:
+            pandas dataframe: dataframe with columns filled
+        """
 
         nutrition_facts = Prepare.__remove_missing_values()
 
@@ -55,6 +85,11 @@ class Prepare:
 
     @classmethod
     def __rename_cols(cls):
+        """__rename_cols rename certain columns for readability
+
+        Returns:
+            pandas dataframe: dataframe with columns renamed
+        """
 
         nutrition_facts = Prepare.__fill_nutrition()
 
@@ -67,6 +102,11 @@ class Prepare:
         return nutrition_facts
 
     def get_food_prep(self):
+        """get_food_prep called the prepped dataframe
+
+        Returns:
+            pandas dataframe: finally preppred dataframe
+        """
 
         nutrition_facts = Prepare.__rename_cols()
         return nutrition_facts

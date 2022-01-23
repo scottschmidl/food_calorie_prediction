@@ -7,6 +7,9 @@ from sklearn.model_selection import RandomizedSearchCV
 from sklearn.metrics import accuracy_score
 
 class ClassificationModels:
+    """
+    Calculates baseline and runs ML models
+    """
 
     nutrition_facts = Prepare().get_food_prep()
 
@@ -17,6 +20,12 @@ class ClassificationModels:
     X_train_scaled, X_validate_scaled, X_test_scaled = sgs.scale(X_train, X_validate, X_test)
 
     def classification_baseline(self):
+        """classification_baseline
+        calculates the baseline accuracy
+
+        Returns:
+            [None]: [nothing to return]
+        """
 
         from pandas import DataFrame
 
@@ -25,9 +34,18 @@ class ClassificationModels:
 
         baseline_acc = accuracy_score(act_pred_error["actual"], act_pred_error["baseline_prediction"])
 
+        # print baseline accuracy
         print(f"Baseline Accuracy Score: {round(baseline_acc, 2)}%")
 
     def classification_models(self, best_model=None):
+        """classification_models performs random forest, adaboost, and support vector
+
+        Args:
+            best_model ([None], optional): [the best model on which to predict with test set]. Defaults to None.
+
+        Returns:
+            [None]: [nothing to return]
+        """
 
         if not best_model:
 
@@ -58,4 +76,5 @@ class ClassificationModels:
 
             rfc_pred_test = best_model.predict(self.X_test_scaled)
 
+            # print test accuracy
             print(f"TEST\nRandom Forest Classifier Test Accuracy: {round(accuracy_score(self.y_test, rfc_pred_test), 2)}%")
