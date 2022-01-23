@@ -1,4 +1,4 @@
-# Food Calorie Prediction Project
+# Food Group, Calorie Prediction Project
 This repo contains my food calorie regression project with Codeup.
 
 ## About
